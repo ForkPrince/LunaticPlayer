@@ -18,7 +18,7 @@ jobs:
           run: choco install netfx-4.5.2-devpack
 
         - name: Install dependencies
-          run: dotnet restore
+          run: dotnet restore LunaticPlayer.sln
 
         - name: Build
-          run: dotnet build
+          run: dotnet build LunaticPlayer.sln
