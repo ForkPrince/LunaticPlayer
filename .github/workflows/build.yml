@@ -17,10 +17,13 @@ jobs:
         - name: Install .NET Framework Developer Packs
           run: choco install netfx-4.5.2-devpack
 
+        - name: Install Visual Studio 2017 Build Tools
+          run: choco install visualstudio2017buildtools --package-parameters "--add Microsoft.VisualStudio.Workload.ManagedDesktopBuildTools --includeRecommended --includeOptional" -y
+    
         - name: Install .NET Core SDK
           uses: actions/setup-dotnet@v4
           with:
-            dotnet-version: '4.5.2'
+            dotnet-version: '5.x'
 
         - name: Install dependencies
           run: nuget restore LunaticPlayer.sln
