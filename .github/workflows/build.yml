@@ -1,0 +1,29 @@
+name: Build Appp
+
+on:
+  push:
+    branches:
+      - 'master'
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+        - uses: actions/checkout@v4
+
+        - name: Setup dotnet
+          uses: actions/setup-dotnet@v3
+          with:
+            dotnet-version: '4.5.2'
+
+        - name: Install dependencies
+          run: dotnet restore
+
+        - name: Build
+          run: dotnet build
+
+        - name: Test with the dotnet CLI
+          run: dotnet test
