@@ -29,4 +29,4 @@ jobs:
           run: nuget restore LunaticPlayer.sln
 
         - name: Build
-          run: dotnet build LunaticPlayer.sln
+          run: msbuild LunaticPlayer.sln
