@@ -11,7 +11,7 @@ namespace LunaticPlayer.GRadioAPI.Clients
     public class JsonApiClient : IApiClient
     {
         public static string StreamUrl = "https://stream.gensokyoradio.net/3/";
-        public const string ApiUrl = "https://gensokyoradio.net/api/station/playing/";
+        public const string ApiUrl = "https://gensokyoradio.net/json/";
 
         public ApiSong CurrentApiSong { get; private set; }
 
