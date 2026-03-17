@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,20 @@ namespace LunaticPlayer.Helpers
                     Clipboard.SetText(JsonConvert.SerializeObject(song));
                     break;
                 case CMenuAction.SearchOnGoogle:
-                    System.Diagnostics.Process.Start($"https://www.google.com/search?q={song.ArtistName}+{song.Title}");
+                    var psi = new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = $"https://www.google.com/search?q={Uri.EscapeDataString(song.ArtistName + " " + song.Title)}",
+                        UseShellExecute = true
+                    };
+                    System.Diagnostics.Process.Start(psi);
                     break;
                 case CMenuAction.SearchOnTw:
-                    System.Diagnostics.Process.Start($"https://en.touhouwiki.net/index.php?search={song.CircleName}");
+                    var psiTw = new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = $"https://en.touhouwiki.net/index.php?search={Uri.EscapeDataString(song.CircleName)}",
+                        UseShellExecute = true
+                    };
+                    System.Diagnostics.Process.Start(psiTw);
                     break;
                 case CMenuAction.ShowDetails:
                     var details = new SongDetailsWindow(song);
